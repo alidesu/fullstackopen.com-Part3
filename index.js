@@ -25,6 +25,7 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 const morgan = require("morgan");
+app.use(express.static('dist'))
 
 const customFormat = (tokens, req, res) => {
   return console.log(req.body);
