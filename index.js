@@ -32,7 +32,7 @@ const customFormat = (tokens, req, res) => {
 app.use(morgan("dev"));
 app.use(morgan(customFormat));
 
-const PORT = 3003;
+const PORT = 3006;
 app.listen(PORT, () => {
   console.log(`Server is now live on ${PORT}`);
 });
