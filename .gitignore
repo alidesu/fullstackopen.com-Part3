@@ -1,0 +1,12 @@
+# vscode
+.vscode
+.history
+
+# node
+node_modules
+*/*.rest
+yarn.lock
+
+.log
+
+.env
