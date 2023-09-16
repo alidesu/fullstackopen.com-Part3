@@ -28,6 +28,7 @@ const morgan = require("morgan");
 app.use(express.static("dist"));
 const cors = require("cors");
 app.use(cors());
+const baseUrl = '/api/persons'
 
 const customFormat = (tokens, req, res) => {
   return console.log(req.body);
@@ -44,7 +45,7 @@ app.get("/", (req, res) => {
   res.send("HEllO");
 });
 
-app.get("/api/persons", (req, res) => {
+app.get(baseUrl, (req, res) => {
   res.json(persons);
 });
 
@@ -56,7 +57,7 @@ app.get("/info", (req, res) => {
   );
 });
 
-app.get("/api/persons/:id", (req, res) => {
+app.get("/baseUrl/:id", (req, res) => {
   const id = Number(req.params.id);
   const person = persons.find((per) => per.id === id);
   if (person) {
@@ -66,13 +67,13 @@ app.get("/api/persons/:id", (req, res) => {
   }
 });
 
-app.delete("/api/persons/:id", (req, res) => {
+app.delete("/baseUrl/:id", (req, res) => {
   const id = Number(req.params.id);
   persons = persons.filter((per) => per.id !== id);
   res.status(204).end();
 });
 
-app.post("/api/persons", (req, res) => {
+app.post("/baseUrl", (req, res) => {
   const body = req.body;
   if (!body.name || !body.number) {
     return res.status(400).json({ error: "name or number missing" });
