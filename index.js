@@ -13,13 +13,12 @@ const customFormat = (tokens, req, res) => {
 };
 app.use(morgan("dev"));
 app.use(morgan(customFormat));
+app.use(express.static('dist'))
 
 // const PORT = process.env.PORT || 3006;
 
 
-app.get("/", (req, res) => {
-  res.send("Hello");
-});
+
 
 app.get("/api/persons", (request, response, next) => {
   Person.find({})
