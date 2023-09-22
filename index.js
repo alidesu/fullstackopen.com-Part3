@@ -5,10 +5,9 @@ app.use(express.json());
 const morgan = require("morgan");
 const cors = require("cors");
 app.use(cors());
-const path = require("path");
+app.use(express.static('dist'))
 
 const Person = require('./models/note')
-app.use(express.static(path.join(__dirname, "dist")));
 
 const customFormat = (tokens, req, res) => {
   return console.log(req.body);
