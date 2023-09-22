@@ -5,7 +5,6 @@ app.use(express.json());
 const morgan = require("morgan");
 const cors = require("cors");
 app.use(cors());
-app.use(express.static('dist'))
 
 const Person = require('./models/note')
 
@@ -18,10 +17,9 @@ app.use(morgan(customFormat));
 // const PORT = process.env.PORT || 3006;
 
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+app.get("/", (req, res) => {
+  res.send("Hello");
 });
-
 
 app.get("/api/persons", (request, response, next) => {
   Person.find({})
@@ -116,6 +114,7 @@ const errorHandler = (error, request, response, next) => {
 }
 
 app.use(errorHandler)
+
 
 const PORT = 3006
 app.listen(PORT, () => {
